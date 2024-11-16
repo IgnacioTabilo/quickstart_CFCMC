@@ -4,7 +4,7 @@ El objetivo de este repositorio es explicar de manera breve y explicativa lo nec
 
 Este tutorial, al igual que toda la documentación oficial del paquete (en <a href="https://gitlab.com/ETh_TU_Delft/Brick-CFCMC/-/tree/master?ref_type=heads">GitLab</a> o en <a href="https://thijsvlugt.github.io/website/Brick-CFCMC/Brick-CFCMC.pdf">PDF</a>), asume que *bash* es el intérprete de comandos (shell). Este es el intérprete por default de distribuciones basadas en Devian (*Mint* o *Ubuntu*) o de Fedora.
 
-## Contenidos:
+### Contenidos:
 1. [Recomendaciones preliminares](#c1)
 2. [Instalación básica](#c2)
     1. [Brick-CMCFC para servidores](#c2_1)
@@ -32,7 +32,7 @@ Para instalar **GFortran** desde el terminal en distribuciones de Devian:
 sudo apt-get install gfortran
 ```
 
-Luego de instalar el compilador de Fortran, se debe descargar el software. Es recomendado descargarlo utilizando git desde el <a href="https://gitlab.com/ETh_TU_Delft/Brick-CFCMC/-/tree/master?ref_type=heads">repositorio oficial</a>. Para descargar Brick-CMCFC localmente desde git, se debe ingresar el siguiente comando desde el terminal
+Luego de instalar el compilador de Fortran, se debe descargar el *software*. Es recomendado descargarlo utilizando git desde el <a href="https://gitlab.com/ETh_TU_Delft/Brick-CFCMC/-/tree/master?ref_type=heads">repositorio oficial</a>. Para descargar Brick-CMCFC localmente desde git, se debe ingresar el siguiente comando desde el terminal
 
 ```
 git clone https://gitlab.com/ETh_TU_Delft/Brick-CFCMC.git brick
@@ -40,10 +40,60 @@ git clone https://gitlab.com/ETh_TU_Delft/Brick-CFCMC.git brick
 
 Este comando crea una carpeta llamada `brick` en el directorio indicado. Se debe descargar el software en el directorio **HOME** (`cd ~`) por los pasos que siguen a continuación.
 
-Luego de la descarga
+Luego de la descarga, debemos indicarle a `bash` que ejecute comandos del *software* desde el terminal. Desde el directorio **HOME** debemos abrir el archivo oculto `.bashrc`. Se puede verificar que este archivo se encuentra en **HOME** escribiendo:
+
+```
+ls -a
+```
+
+Luego, se abre el archivo con un editor de texto (vi, Vim, nano, entre otros). Por ejemplo, para nano:
+
+```
+nano .bashrc
+```
+
+Luego, al final del documento (`Crtl+W+V` con nano) se ingresan las siguientes lineas de texto:
+
+```
+export BRICK_DIR=${HOME}/brick
+. ${BRICK_DIR}/.brick.sh
+. ${BRICK_DIR}/.autocompletion
+```
+
+Se guardan los cambios y se actualiza `bash` con,
+
+```
+source .bashrc
+```
+
+O simplemente saliendo y entrando nuevamente al terminal.
+
+Finalmente, el *software* puede ser compilado desde el terminal utilizando:
+
+```
+brick compile
+```
+
+Si se utiliza **GFortran**, se recomienda agregar el argumento `-g` o `--gfortran` luego de `compile`.
+
 
 ### Brick-CMCFC para servidores <a name="c2_1"></a>
-Lorem ipsum
+
+La gran mayoría de los servidores en el mundo funcionan utilizando alguna distribución de Linux, por este motivo se asume que este es el caso. En específico, este tutorial considera el uso de los <a href="https://dt.ing.uc.cl/recursos/cluster/">clústers de la UC</a>. El uso de servidores es casi obligatorio para trabajar con simulaciones de este estilo, en especial por el tiempo necesario para computar resultados. Para conectarse a los clústers de ingeniería, se debe pedir un usuario y luego estrablecer conección desde el terminal.
+
+```
+ssh [usuario]@cluster.ing.uc.cl
+```
+
+En servidores, la instalación de **Fortran** debe ser hecha por el administrador de dicho servidor. En el caso de los clústers UC, este viene instalado por default.
+
+Los pasos son los mismos para la instalación de **Brick-CFCMC** de manera local. No obstante, si se tiene una copia local ya instalada, es análogo copiar los documentos locales al servidor que, descargarlos con `git`. Esto se puede hacer con `scp` desde el terminal local.
+
+```
+scp -f ~/brick [usuario]@[nombre-host].cl:brick
+```
+
+Es imporante cambiar el archivo `.bashrc`. El cual se debería encontrar siempre en el directorio **HOME** del usuario.
 
 ## Simluación y comandos básicos <a name="c3"></a>
 Lorem ipsum
