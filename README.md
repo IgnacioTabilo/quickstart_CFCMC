@@ -117,12 +117,14 @@ Con este comando también se podrá acceder a la base de datos de algunos compue
 
 - `settings.in` contiene información sobre la simulación: Número de subsistemas, temperatura, presión, ciclos de iteración, métodos de cálculo para propiedades termodinámicas, esquemas, entre otros conceptos de simulación molecular.
 - `forcefield.in` contine información sobre parámetros de interacción, atracción/repulsión (Lennard-Jones) y torsión, para el cálculo de las **energías** y **fuerzas** en el sistema. Además de incluir métodos (*Wolf, FG o Edwald*), y otros parámetros asociados a los métodos y simulación.
-- `topology.in` define el número de moléculas en el sistema, así como opciones específicas según el *ensemble*<sup>[1](#q1)</sup>
+- `topology.in` define el número inicial de moléculas en el sistema, así como opciones específicas según el *ensemble*<sup>[1](#q1)</sup> y parámetros asociados a los *grupos fraccionales*<sup>[2](#q2)</sup>. También, puede incluir información sobre las reacciones químicas del sistema.
 
 En `INPUT`, también es necesario crear documentos con parámetros de interacciones de Lennard-Jones y electroestáticas, geometría molecular, enlaces, torsión molecular y angulación (*bending*) molecular, para cada molécula en el sistema. En `${BRICK_DIR}/MOLECULES` o en `${BRICK_DIR}/EXAMPLES` se pueden encontrar archivos con la información correspondiente para algunas moléculas en específico.
 
-> <a name="q1"></a>[1] *Ensemble*: 
+> <a name="q1">[1]</a> Ensemble: **Es la colección de todas las configuraciones o microestados (subsistemas) de un sistema físico que son gobernados por un mismo conjunto de parámetros de control**. Por ejemplo, en un sistema isotérmico, todos sus subespacios o conjuntos moleculares deben tener la misma temperatura. En simulación molecular, los *ensembles* son llamados según los parámetros que permanecen constantes.
+> <a name="q2">[2]</a> Grupos fraccionales: En **Brick-CFCMC**, CFC significa *Continuous Fractional Component*. Esta técnica permite separar una molécula en "moleculas fraccionales" (definidas por un parámetro fraccional $\lambda\in\left[0,1\right]$), de esta manera se regulan las fuerzas de interacción con otras moléculas adyacentes. **Los grupos fraccionales entonces, son grupos de moléculas que comparten parámetros fraccionales**.
 
 ### Salidas (Outputs) <a name="c3_2"></a>
 
-> :warning: En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT` como apoyo para discutir conceptos importantes sobre los resultados de la simulación.
+> [!WARNING]
+> En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT` como apoyo para discutir conceptos importantes sobre los resultados de la simulación.
