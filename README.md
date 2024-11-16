@@ -117,11 +117,11 @@ Con este comando también se podrá acceder a la base de datos de algunos compue
 
 - `settings.in` contiene información sobre la simulación: Número de subsistemas, temperatura, presión, ciclos de iteración, métodos de cálculo para propiedades termodinámicas, esquemas, entre otros conceptos de simulación molecular.
 - `forcefield.in` contine información sobre parámetros de interacción, atracción/repulsión (Lennard-Jones) y torsión, para el cálculo de las **energías** y **fuerzas** en el sistema. Además de incluir métodos (*Wolf, FG o Edwald*), y otros parámetros asociados a los métodos y simulación.
-- `topology.in` define el número de moléculas en el sistema, así como opciones específicas según el *ensemble*<sup href=#q1>1</sup>
+- `topology.in` define el número de moléculas en el sistema, así como opciones específicas según el *ensemble*<sup>[1](#q1)</sup>
 
 En `INPUT`, también es necesario crear documentos con parámetros de interacciones de Lennard-Jones y electroestáticas, geometría molecular, enlaces, torsión molecular y angulación (*bending*) molecular, para cada molécula en el sistema. En `${BRICK_DIR}/MOLECULES` o en `${BRICK_DIR}/EXAMPLES` se pueden encontrar archivos con la información correspondiente para algunas moléculas en específico.
 
-> <a name="q1">[1]</a> *Ensemble*: 
+> <a name="q1"></a>[1] *Ensemble*: 
 
 ### Salidas (Outputs) <a name="c3_2"></a>
 
