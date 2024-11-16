@@ -12,10 +12,14 @@ Este tutorial, al igual que toda la documentación oficial del paquete (en <a hr
     1. [Entradas (Inputs)](#c3_1)
     2. [Salidas (Outputs)](#c3_2)
 
+<br></br>
+
 ## Recomendaciones preliminares <a name="c1"></a>
 Antes de utilizar este paquete de *software* se recomienda encarecidamente manejar **comandos básicos desde el terminal bash** (*cambiar/crear directorios, manejo de archivos y editores de texto básicos*). Lo mismo aplica para comandos básicos de Git, el cual viene instalado por default en distribuciones de Linux como Ubuntu.
 * La distribución de **Ubuntu** es recomendada para aprender a utilizar Linux. Ubuntu cuenta con una excelente documentación y con una <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">guía para principiantes con los comandos básicos del terminal</a>.
 * Por otro lado, **GitHub** es una herramienta útil para manejar archivos y colaborar en proyectos computacionales. Además, contiene en su estructura los comandos de Git que serán necesarios en este tutorial. <a href="https://docs.github.com/es">Documentación en español</a>.
+
+<br></br>
 
 ## Instalación básica <a name="c2"></a>
 La instalación de **Brick-CFCMC** es sencilla y consta de dos pasos: instalar **Fortran** y descargar el *software*.
@@ -77,7 +81,7 @@ Si se utiliza **GFortran**, se recomienda agregar el argumento `-g` o `--gfortra
 
 ### Brick-CFCMC para servidores <a name="c2_1"></a>
 
-La gran mayoría de los servidores en el mundo funcionan utilizando alguna distribución de Linux, por este motivo se asume que este es el caso. En específico, este tutorial considera el uso de los <a href="https://dt.ing.uc.cl/recursos/cluster/">clústers de la UC</a>. El uso de servidores es casi obligatorio para trabajar con simulaciones de este estilo, en especial por el tiempo necesario para computar resultados.
+La gran mayoría de los servidores en el mundo utilizan alguna distribución de Linux, por este motivo se asume que este es el caso. En específico, este tutorial considera el uso de los <a href="https://dt.ing.uc.cl/recursos/cluster/">clústers de la UC</a>. El uso de servidores es casi obligatorio para trabajar con simulaciones de este estilo, en especial por el tiempo necesario para computar resultados.
 
 Para conectarse a los clústers de ingeniería, se debe pedir un usuario y luego estrablecer conección desde el terminal.
 
@@ -107,7 +111,7 @@ Crea un directorio de simulación con el nombre entregado con el subdirectorio `
 
 ### Entradas (Inputs) <a name="c3_1"></a>
 
-El directorio `INPUT` debe contener 3 archivos, `settings.in`, `forcefield.in` y `topology.in`. El primer documento se agrega automáticamente con `brick new`, los últimos dos se pueden crear manualmente, o lo más recomendado, crear ambos documentos utilizando:
+El directorio `INPUT` debe contener 3 archivos, `settings.in`, `forcefield.in` y `topology.in`. El primer documento se agrega automáticamente con `brick new`, los últimos dos se pueden crear manualmente o, lo más recomendado, crear ambos documentos utilizando:
 
 ```
 brick input
@@ -119,14 +123,21 @@ Con este comando también se podrá acceder a la base de datos de algunos compue
 - `forcefield.in` contine información sobre parámetros de interacción, atracción/repulsión (Lennard-Jones) y torsión, para el cálculo de las **energías** y **fuerzas** en el sistema. Además de incluir métodos (*Wolf, FG o Edwald*), y otros parámetros asociados a los métodos y simulación.
 - `topology.in` define el número inicial de moléculas en el sistema, así como opciones específicas según el *ensemble*<sup>[1](#q1)</sup> y parámetros asociados a los *grupos fraccionales*<sup>[2](#q2)</sup>. También, puede incluir información sobre las reacciones químicas del sistema.
 
-En `INPUT`, también es necesario crear documentos con parámetros de interacciones de Lennard-Jones y electroestáticas, geometría molecular, enlaces, torsión molecular y angulación (*bending*) molecular, para cada molécula en el sistema. En `${BRICK_DIR}/MOLECULES` o en `${BRICK_DIR}/EXAMPLES` se pueden encontrar archivos con la información correspondiente para algunas moléculas en específico.
+En `INPUT`, también es necesario crear documentos con parámetros de interacciones de Lennard-Jones y electroestáticas, geometría molecular, enlaces, torsión molecular y angulación (*bending*) molecular, **para cada molécula en el sistema**. En `${BRICK_DIR}/MOLECULES` o en `${BRICK_DIR}/EXAMPLES` se pueden encontrar archivos con la información correspondiente para algunas moléculas en específico.
 
 <br></br>
 
-> <a name="q1">[1]</a> Ensemble: **Es la colección de todas las configuraciones o microestados (subsistemas) de un sistema físico que son gobernados por un mismo conjunto de parámetros de control**. Por ejemplo, en un sistema isotérmico, todos sus subespacios o conjuntos moleculares deben tener la misma temperatura. En simulación molecular, los *ensembles* son llamados según los parámetros que permanecen constantes.<br></br>
+> <a name="q1">[1]</a> Ensemble: **Es la colección de todas las configuraciones o microestados (subsistemas) de un sistema físico que son gobernados por un mismo conjunto de parámetros de control**. Por ejemplo, en un sistema isotérmico, todos sus subespacios o conjuntos moleculares deben tener la misma temperatura. En simulación molecular, los *ensembles* son llamados según los parámetros que permanecen constantes.
+
 > <a name="q2">[2]</a> Grupos fraccionales: En **Brick-CFCMC**, CFC significa *Continuous Fractional Component*. Esta técnica permite separar una molécula en "moleculas fraccionales" (definidas por un parámetro fraccional $\lambda\in\left[0,1\right]$), de esta manera se regulan las fuerzas de interacción con otras moléculas adyacentes. **Los grupos fraccionales entonces, son grupos de moléculas que comparten parámetros fraccionales**.
+
+<br></br>
 
 ### Salidas (Outputs) <a name="c3_2"></a>
 
+En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT` como apoyo para discutir conceptos importantes sobre los resultados de la simulación.
+
 > [!WARNING]
-> En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT` como apoyo para discutir conceptos importantes sobre los resultados de la simulación.
+> La simulación puede extenderse durante varios días. Se puede cambiar el número de iteraciones desde el archivo `settings.in`. Sin embargo, los resultados en `OUTPUT` serán diferentes.
+
+WIP
