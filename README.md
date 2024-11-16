@@ -99,6 +99,8 @@ scp -r ~/brick [usuario]@[nombre-host]:brick
 
 Es imporante cambiar el archivo `.bashrc`. El cual se debería encontrar siempre en el directorio **HOME** del usuario.
 
+<br></br>
+
 ## Simluación y comandos básicos <a name="c3"></a>
 
 Para comenzar cualquier simulación, el comando:
@@ -125,14 +127,6 @@ Con este comando también se podrá acceder a la base de datos de algunos compue
 
 En `INPUT`, también es necesario crear documentos con parámetros de interacciones de Lennard-Jones y electroestáticas, geometría molecular, enlaces, torsión molecular y angulación (*bending*) molecular, **para cada molécula en el sistema**. En `${BRICK_DIR}/MOLECULES` o en `${BRICK_DIR}/EXAMPLES` se pueden encontrar archivos con la información correspondiente para algunas moléculas en específico.
 
-<br></br>
-
-> <a name="q1">[1]</a> Ensemble: **Es la colección de todas las configuraciones o microestados (subsistemas) de un sistema físico que son gobernados por un mismo conjunto de parámetros de control**. Por ejemplo, en un sistema isotérmico, todos sus subespacios o conjuntos moleculares deben tener la misma temperatura. En simulación molecular, los *ensembles* son llamados según los parámetros que permanecen constantes.
-
-> <a name="q2">[2]</a> Grupos fraccionales: En **Brick-CFCMC**, CFC significa *Continuous Fractional Component*. Esta técnica permite separar una molécula en "moleculas fraccionales" (definidas por un parámetro fraccional $\lambda\in\left[0,1\right]$), de esta manera se regulan las fuerzas de interacción con otras moléculas adyacentes. **Los grupos fraccionales entonces, son grupos de moléculas que comparten parámetros fraccionales**.
-
-<br></br>
-
 ### Salidas (Outputs) <a name="c3_2"></a>
 
 En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT` como apoyo para discutir conceptos importantes sobre los resultados de la simulación.
@@ -141,3 +135,8 @@ En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/E
 > La simulación puede extenderse durante varios días. Se puede cambiar el número de iteraciones desde el archivo `settings.in`. Sin embargo, los resultados en `OUTPUT` serán diferentes.
 
 WIP
+
+<br></br>
+
+> <a name="q1">[1]</a> Ensemble: **Es la colección de todas las configuraciones o microestados (subsistemas) de un sistema físico que son gobernados por un mismo conjunto de parámetros de control**. Por ejemplo, en un sistema isotérmico, todos sus subespacios o conjuntos moleculares deben tener la misma temperatura. En simulación molecular, los *ensembles* son llamados según los parámetros que permanecen constantes.<br></br>
+> <a name="q2">[2]</a> Grupos fraccionales: En **Brick-CFCMC**, CFC significa *Continuous Fractional Component*. Esta técnica permite separar una molécula en "moleculas fraccionales" (definidas por un parámetro fraccional $\lambda\in\left[0,1\right]$), de esta manera se regulan las fuerzas de interacción con otras moléculas adyacentes. **Los grupos fraccionales entonces, son grupos de moléculas que comparten parámetros fraccionales**.
