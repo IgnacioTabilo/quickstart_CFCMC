@@ -22,15 +22,25 @@ Antes de utilizar este paquete de *software* se recomienda encarecidamente manej
 ## Instalación básica <a name="c2"></a>
 La instalación de **Brick-CMCFC** es sencilla y consta de dos pasos: instalar **Fortran** y descargar el *software*.
 
-Se puede trabajar con el <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler.html">compilador de Fortran de Intel</a>, este funciona únicamente con procesadores de Intel, y sus versiones están optimizadas para funcionar con las tecnologías de cómputo ofrecidas por esta compañía.
+Se puede trabajar con el <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler.html">compilador de Fortran de Intel</a>, este funciona únicamente con procesadores Intel, y sus versiones están optimizadas para funcionar con las tecnologías de cómputo ofrecidas por esta compañía.
 
 Otra alternativa es utilizar <a href="https://gcc.gnu.org/fortran/">GNU Fortran</a>, este compilador se encuentra disponible en varias distribuciones de Linux, el listado se puede encontrar <a href="https://gcc.gnu.org/wiki/GFortranDistros">aquí</a>. Sin embargo, también se puede revisar los paquetes disponibles en la documentación de algunas distribuciones (<a href="https://packages.ubuntu.com/search?keywords=gfortran">Ejemplo con Ubuntu</a>).
 
-Para instalar **GFortran** desde el terminal:
+Para instalar **GFortran** desde el terminal en distribuciones de Devian:
 
 ```
 sudo apt-get install gfortran
 ```
+
+Luego de instalar el compilador de Fortran, se debe descargar el software. Es recomendado descargarlo utilizando git desde el <a href="https://gitlab.com/ETh_TU_Delft/Brick-CFCMC/-/tree/master?ref_type=heads">repositorio oficial</a>. Para descargar Brick-CMCFC localmente desde git, se debe ingresar el siguiente comando desde el terminal
+
+```
+git clone https://gitlab.com/ETh_TU_Delft/Brick-CFCMC.git brick
+```
+
+Este comando crea una carpeta llamada `brick` en el directorio indicado. Se debe descargar el software en el directorio **HOME** (`cd ~`) por los pasos que siguen a continuación.
+
+Luego de la descarga
 
 ### Brick-CMCFC para servidores <a name="c2_1"></a>
 Lorem ipsum
