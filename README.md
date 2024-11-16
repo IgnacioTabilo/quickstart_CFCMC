@@ -97,12 +97,32 @@ Es imporante cambiar el archivo `.bashrc`. El cual se debería encontrar siempre
 
 ## Simluación y comandos básicos <a name="c3"></a>
 
-> :warning: En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT` como apoyo para discutir conceptos básicos y requerimientos de simulación.
+Para comenzar cualquier simulación, el comando:
 
-**Brick-CFCMC** es un paquete de **software** para realizar simulaciones moleculares.
+```
+brick new [nombre_simulacion]
+```
+
+Crea un directorio de simulación con el nombre entregado con el subdirectorio `INPUT` y un ejecutable `run`. 
 
 ### Entradas (Inputs) <a name="c3_1"></a>
-Lorem ipsum
+
+El directorio `INPUT` debe contener 3 archivos, `settings.in`, `forcefield.in` y `topology.in`. El primer documento se agrega automáticamente con `brick new`, los últimos dos se pueden crear manualmente, o lo más recomendado, crear ambos documentos utilizando:
+
+```
+brick input
+```
+
+Con este comando también se podrá acceder a la base de datos de algunos compuestos básicos. Opcionalmente, brick cuenta con directorios `TEMPLATES` y `EXAMPLES`, donde se pueden copiar (`cp`) los archivos correspondientes y después modificarlos con algún editor de texto.
+
+- `settings.in` contiene información sobre la simulación: Número de subsistemas, temperatura, presión, ciclos de iteración, métodos de cálculo para propiedades termodinámicas, esquemas, entre otros conceptos de simulación molecular.
+- `forcefield.in` contine información sobre parámetros de interacción, atracción/repulsión (Lennard-Jones) y torsión, para el cálculo de las **energías** y **fuerzas** en el sistema. Además de incluir métodos (*Wolf, FG o Edwald*), y otros parámetros asociados a los métodos y simulación.
+- `topology.in` define el número de moléculas en el sistema, así como opciones específicas según el *ensemble*<sup href=#q1>1</sup>
+
+En `INPUT`, también es necesario crear documentos con parámetros de interacciones de Lennard-Jones y electroestáticas, geometría molecular, enlaces, torsión molecular y angulación (*bending*) molecular, para cada molécula en el sistema. En `${BRICK_DIR}/MOLECULES` o en `${BRICK_DIR}/EXAMPLES` se pueden encontrar archivos con la información correspondiente para algunas moléculas en específico.
+
+> <a name="q1">[1]</a> *Ensemble*: 
 
 ### Salidas (Outputs) <a name="c3_2"></a>
-Lorem ipsum
+
+> :warning: En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT` como apoyo para discutir conceptos importantes sobre los resultados de la simulación.
