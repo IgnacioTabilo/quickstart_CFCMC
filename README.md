@@ -122,7 +122,7 @@ brick input
 Con este comando también se podrá acceder a la base de datos de algunos compuestos básicos. Opcionalmente, brick cuenta con directorios `TEMPLATES` y `EXAMPLES`, donde se pueden copiar (`cp`) los archivos correspondientes y después modificarlos con algún editor de texto.
 
 - `settings.in` contiene información sobre la simulación: Número de subsistemas, temperatura, presión, ciclos de iteración, métodos de cálculo para propiedades termodinámicas, esquemas, entre otros conceptos de simulación molecular.
-- `forcefield.in` contine información sobre parámetros de interacción, atracción/repulsión (Lennard-Jones) y torsión, para el cálculo de las **energías** y **fuerzas** en el sistema. Además de incluir métodos (*Wolf, FG o Edwald*), y otros parámetros asociados a los métodos y simulación.
+- `forcefield.in` contiene información sobre parámetros de interacción, atracción/repulsión (Lennard-Jones) y torsión, para el cálculo de las **energías** y **fuerzas** en el sistema. Además de incluir métodos (*Wolf, FG o Edwald*), y otros parámetros asociados a los métodos y simulación.
 - `topology.in` define el número inicial de moléculas en el sistema, así como opciones específicas según el *ensemble*<sup>[1](#q1)</sup> y parámetros asociados a los *grupos fraccionales*<sup>[2](#q2)</sup>. También, puede incluir información sobre las reacciones químicas del sistema.
 
 En `INPUT`, también es necesario crear documentos con parámetros de interacciones de Lennard-Jones y electroestáticas, geometría molecular, enlaces, torsión molecular y angulación (*bending*) molecular, **para cada molécula en el sistema**. En `${BRICK_DIR}/MOLECULES` o en `${BRICK_DIR}/EXAMPLES` se pueden encontrar archivos con la información correspondiente para algunas moléculas en específico.
@@ -131,10 +131,33 @@ En `INPUT`, también es necesario crear documentos con parámetros de interaccio
 
 En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT` como apoyo para discutir conceptos importantes sobre los resultados de la simulación.
 
+La simulación debe iniciarse desde el directorio correspondiente, entiéndase, donde se encuentre el directorio `INPUT` y el ejecutable `run`. Luego, para comenzar la simulación utilizando ***GNU-Fortran**:
+
+```
+./run -g
+```
+
 > [!WARNING]
 > La simulación puede extenderse durante varios días. Se puede cambiar el número de iteraciones desde el archivo `settings.in`. Sin embargo, los resultados en `OUTPUT` serán diferentes.
 
-WIP
+Se puede descargar el resultado de la simulación desde este repositorio en caso de no iniciar la simulación.
+
+```
+cd ${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT && git clone https://github.com/IgnacioTabilo/quickstart_CFCMC.git
+```
+La carpeta `OUTPUT` contiene información relevante de la simulación. Aquellos archivos `.dat` pueden ser graficados en lenguajes como python a través de jupyter. Los archivos `.info` principalmente sirven para solucionar errores del código (*Debbuging*). Los archivos `.out` sirven como *input* o entrada para otra simulación. Finalmente, los archivos `.xyz` continen información sobre la configuración tridimencional de las moléculas, estos pueden ser visualizados en programas como **Jmol**.
+
+A continuación lo más importante:
+
+- `sim.log`: El archivo sim.log contiene información relevante sobre los resultados de la simulación: potenciales químicos, coeficientes de fugacidad, propiedades de mezclado (propiedades parcial molares), densidad, entre otros. También, incluye resultados probabilísticos de la simulación como las razones de aceptación de los *trial moves*.
+- **Propiedades termodinámicas**: La densidad/volumen, propiedades de energía y número de moléculas en función de los ciclos de Monte Carlo. Esto se encuentra los archivos `[propiedad]_vs_cycle.dat`. Además, se pueden encontrar los promedios en base a los ciclos de Monte Carlo en `av_[propiedad].dat`.
+- **Propiedades sobre $\lambda$**: Las propiedades termodinámicas, se pueden encontrar en función de los parámetros fraccionales $\lambda$ ocupados en la simulación. Estos se ordenan en función de la entrada `topology.in`.
+- **Cambios termodinámicos**: En el subdirectorio `UMBRELLA_SAMPLING` se encuentran diagramas, $\mu$-$\beta$, $\mu$-$P$, $\rho$-$\beta$ y $\rho$-$P$. Donde $\mu$ es el potencial químico y $\beta$ es el recíproco de la **temperatura termodinámica** ($1/k_BT$), también conocido como *coldness*.
+- **Resultados sobre *weight functions***: El subdirectorio `WEIGHTFUNCTIONS` contiene la evolución y el resultado final de la función peso, la cual puede ser utilizada en otras simulaciones (`weightfunction.out`). Este resultado es sumamente útil, ya que las funciones peso reducen considerablemente el tiempo de cómputo, al colocar más énfasis (recursos) en ciertas regiones del sistema por sobre otros.
+
+#### Visualización de las salidas
+
+Mi simulación sigue corriendo...
 
 <br></br>
 
