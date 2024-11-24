@@ -158,6 +158,8 @@ A continuación lo más importante:
 - **Cambios termodinámicos**: En el subdirectorio `UMBRELLA_SAMPLING` se encuentran diagramas, $\mu-\beta$, $\mu-P$, $\rho-\beta$ y $\rho-P$. Donde $\mu$ es el potencial químico y $\beta$ es el recíproco de la **temperatura termodinámica** ($1/k_BT$), también conocido como *coldness*.
 - **Resultados sobre *weight functions***: El subdirectorio `WEIGHTFUNCTIONS` contiene la evolución y el resultado final de la función peso, la cual puede ser utilizada en otras simulaciones (`weightfunction.out`). Este resultado es sumamente útil, ya que las funciones peso reducen considerablemente el tiempo de cómputo, al colocar más énfasis (recursos) en ciertas regiones del sistema por sobre otros.
 
+<br></br>
+
 ## Visualización de las salidas <a name="c4"></a>
 
 ### GNUplot <a name="c4_1"></a>
@@ -200,7 +202,7 @@ Para visualizar archivos `.xyz` se recomienda utilizar **iRASPA**. Se pueden uti
 sudo snap install iraspa
 ```
 
-Se puede abrir **iRASPA** desde el terminal o con `Alt+F2` y escribiendo `iraspa`. O, también, desde la interfaz de aplicaciones de GNOME. Una vez en la interfaz gráfica, ir a `files -> import`. Debemos buscar el directorio donde se encuentren los archivos `.xyz` de la simulación (`/OUTPUT/CONFIGURATIONS`). Se elige el archivo y se aprieta open.
+Se puede abrir <a href="https://iraspa.org/">iRASPA</a> desde el terminal o con `Alt+F2` y escribiendo `iraspa`. O, también, desde la interfaz de aplicaciones de GNOME. Una vez en la interfaz gráfica, ir a `files -> import`. Debemos buscar el directorio donde se encuentren los archivos `.xyz` de la simulación (`/OUTPUT/CONFIGURATIONS`). Se elige el archivo y se aprieta open. Si el archivo se importó correctamente, se podrá bajo la carpeta `Local Projects`, haciendo click en esta instancia del archivo lo podremos visualizar desde el programa. Brick entrega un mapa de la simulación inicial y final para el sistema completo y por componente.
 
 <br></br>
 
