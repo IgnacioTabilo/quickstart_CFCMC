@@ -189,16 +189,18 @@ plot 'archivo.dat' 1:4 w lp
 O alternativamente,
 
 ```
-plot 'archivo.dat' (column(1)):(column(2))
+plot 'archivo.dat' (column(1)):(column(4))
 ```
 
 ### iRASPA <a name="c4_2"></a>
 
-Para visualizar archivos `.xyz` se recomienda utilizar **iRASPA**. Se pueden utilizar otros programas, sin embargo, los creadores del *software* brick también pertenecen a este proyecto. La instalación de este programa es gratuito y se puede realizar con **snapcraft** desde Ubuntu a partir del terminal.
+Para visualizar archivos `.xyz` se recomienda utilizar **iRASPA**. Se pueden utilizar otros programas como **Jmol**, sin embargo, los creadores del *software* brick también pertenecen a este proyecto. La instalación de este programa es gratuito y se puede realizar con **snapcraft** desde Ubuntu a partir del terminal.
 
 ```
 sudo snap install iraspa
 ```
+
+Se puede abrir **iRASPA** desde el terminal o con `Alt+F2` y escribiendo `iraspa`. O, también, desde la interfaz de aplicaciones de GNOME. Una vez en la interfaz gráfica, ir a `files -> import`. Debemos buscar el directorio donde se encuentren los archivos `.xyz` de la simulación (`/OUTPUT/CONFIGURATIONS`). Se elige el archivo y se aprieta open.
 
 <br></br>
 
