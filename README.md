@@ -11,6 +11,9 @@ Este tutorial, al igual que toda la documentación oficial del paquete (en <a hr
 3. [Simluación y comandos básicos](#c3)
     1. [Entradas (Inputs)](#c3_1)
     2. [Salidas (Outputs)](#c3_2)
+4. [Visualización de las salidas](#c4)
+    1. [GNUplot](#c4_1)
+    2. [iRASPA](#c4_2)
 
 <br></br>
 
@@ -155,9 +158,47 @@ A continuación lo más importante:
 - **Cambios termodinámicos**: En el subdirectorio `UMBRELLA_SAMPLING` se encuentran diagramas, $\mu-\beta$, $\mu-P$, $\rho-\beta$ y $\rho-P$. Donde $\mu$ es el potencial químico y $\beta$ es el recíproco de la **temperatura termodinámica** ($1/k_BT$), también conocido como *coldness*.
 - **Resultados sobre *weight functions***: El subdirectorio `WEIGHTFUNCTIONS` contiene la evolución y el resultado final de la función peso, la cual puede ser utilizada en otras simulaciones (`weightfunction.out`). Este resultado es sumamente útil, ya que las funciones peso reducen considerablemente el tiempo de cómputo, al colocar más énfasis (recursos) en ciertas regiones del sistema por sobre otros.
 
-#### Visualización de las salidas
+## Visualización de las salidas <a name="c4"></a>
 
-Mi simulación sigue corriendo...
+### GNUplot <a name="c4_1"></a>
+
+Para la visualización de los resultados `.dat` se recomienda utilizar `gnuplot`. La instalación es sencilla:
+
+```
+sudo apt install gnuplot
+```
+
+Con esta herramienta nos podemos situar en el directorio donde se encuentren nuestros resultados `OUTPUT` y escribir en el terminal:
+
+```
+gnuplot
+```
+
+Luego, podemos graficar los datos utilizando:
+
+```
+plot 'archivo.dat' w lp
+```
+
+Los argumentos `w lp` sirven para graficar los datos con líneas `l` y con puntos `p`. En muchas situaciones, tendremos que elegir columnas en específico, para esto simplemente se puede escribir desde la interfaz de `gnuplot`, la columna del eje x seguido de `:` y la columna del eje y. Por ejemplo, si queremos graficar la columna 1 y 4, en el eje x e y respectivamente:
+
+```
+plot 'archivo.dat' 1:4 w lp
+```
+
+O alternativamente,
+
+```
+plot 'archivo.dat' (column(1)):(column(2))
+```
+
+### iRASPA <a name="c4_2"></a>
+
+Para visualizar archivos `.xyz` se recomienda utilizar **iRASPA**. Se pueden utilizar otros programas, sin embargo, los creadores del *software* brick también pertenecen a este proyecto. La instalación de este programa es gratuito y se puede realizar con **snapcraft** desde Ubuntu a partir del terminal.
+
+```
+sudo snap install iraspa
+```
 
 <br></br>
 
