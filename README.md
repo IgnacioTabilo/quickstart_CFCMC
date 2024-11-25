@@ -134,7 +134,7 @@ En `INPUT`, también es necesario crear documentos con parámetros de interaccio
 
 En esta sección se utilizará el ejemplo `${BRICK_DIR}/EXAMPLES/Ionic_Liquids/Example_2_Solubility_NPT` como apoyo para discutir conceptos importantes sobre los resultados de la simulación.
 
-La simulación debe iniciarse desde el directorio correspondiente, entiéndase, donde se encuentre el directorio `INPUT` y el ejecutable `run`. Luego, para comenzar la simulación utilizando ***GNU-Fortran**:
+La simulación debe iniciarse desde el directorio correspondiente, entiéndase, donde se encuentre el directorio `INPUT` y el ejecutable `run`. Luego, para comenzar la simulación utilizando **GNU-Fortran**:
 
 ```
 ./run -g
@@ -203,6 +203,10 @@ sudo snap install iraspa
 ```
 
 Se puede abrir <a href="https://iraspa.org/">iRASPA</a> desde el terminal o con `Alt+F2` y escribiendo `iraspa`. O, también, desde la interfaz de aplicaciones de GNOME. Una vez en la interfaz gráfica, ir a `files -> import`. Debemos buscar el directorio donde se encuentren los archivos `.xyz` de la simulación (`/OUTPUT/CONFIGURATIONS`). Se elige el archivo y se aprieta open. Si el archivo se importó correctamente, se podrá bajo la carpeta `Local Projects`, haciendo click en esta instancia del archivo lo podremos visualizar desde el programa. Brick entrega un mapa de la simulación inicial y final para el sistema completo y por componente.
+
+### Video tutorial
+
+Por último, se encuentra un video explicativo del proceso completo de la simulación, también contiene el procedimiento de visualización gráfica y la muestra de varios de los resultados: <a href="https://youtu.be/iCgvN7aGQFg"> enlace a YouTube</a>.
 
 <br></br>
 
